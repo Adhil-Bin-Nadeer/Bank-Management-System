@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Exception;
-import bank.management.system.Con;
-import java.lang.Throwable;
 
 public class Login extends JFrame implements ActionListener {
     JLabel label1,label2,label3;
