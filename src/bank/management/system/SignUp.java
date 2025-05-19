@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Random;
-import java.lang.Exception;
-import bank.management.system.Con;
 
 public class SignUp extends JFrame implements ActionListener {
 
@@ -225,7 +223,7 @@ public class SignUp extends JFrame implements ActionListener {
                 return; // Stop execution after showing the dialog
             }
 
-                Con con1 = new Con();
+                Connection con1 = new Connection();
             String q = "INSERT INTO signup (form_no, Name, father_name, DOB, gender, email, marriage_status, address, city, pincode, state) VALUES ('" + formno + "','" + name + "','" + fname + "','" + dob + "','" + gender + "','" + email + "','" + martial + "','" + address + "','" + city + "','" + pincode + "','" + state + "')";
             con1.statement.executeUpdate(q);
                 new Signup2(first);
