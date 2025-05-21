@@ -148,29 +148,29 @@ public class SignUp3 extends JFrame implements ActionListener {
         add(c2);
 
 
-        c4 = new JCheckBox("Mobile Banking");
-        c4.setBackground(new Color(112, 236, 213));
-        c4.setFont(new Font("Raleway", Font.BOLD,16));
-        c4.setBounds(335,400,150,30);
-        add(c4);
-
-        c5 = new JCheckBox("Email Alerts");
-        c5.setBackground(new Color(112, 236, 213));
-        c5.setFont(new Font("Raleway", Font.BOLD,16));
-        c5.setBounds(515,400,150,30);
-        add(c5);
-
-        c6 = new JCheckBox("Cheque Book");
-        c6.setBackground(new Color(112, 236, 213));
-        c6.setFont(new Font("Raleway", Font.BOLD,16));
-        c6.setBounds(335,440,150,30);
-        add(c6);
-
-        c3 = new JCheckBox("E-Statement");
+        c3 = new JCheckBox("Mobile Banking");
         c3.setBackground(new Color(112, 236, 213));
         c3.setFont(new Font("Raleway", Font.BOLD,16));
-        c3.setBounds(515,440,150,30);
+        c3.setBounds(335,400,150,30);
         add(c3);
+
+        c4 = new JCheckBox("Email Alerts");
+        c4.setBackground(new Color(112, 236, 213));
+        c4.setFont(new Font("Raleway", Font.BOLD,16));
+        c4.setBounds(515,400,150,30);
+        add(c4);
+
+        c5 = new JCheckBox("Cheque Book");
+        c5.setBackground(new Color(112, 236, 213));
+        c5.setFont(new Font("Raleway", Font.BOLD,16));
+        c5.setBounds(335,440,150,30);
+        add(c5);
+
+        c6 = new JCheckBox("E-Statement");
+        c6.setBackground(new Color(112, 236, 213));
+        c6.setFont(new Font("Raleway", Font.BOLD,16));
+        c6.setBounds(515,440,150,30);
+        add(c6);
 
         JCheckBox c7 = new JCheckBox("I here by declare that the above entered details are correct to the best of my knowledge");
         c7.setBackground(new Color(112, 236, 213));
@@ -218,22 +218,73 @@ public class SignUp3 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
 
-    String account_type = null;
-    if(r1.isSelected()){
-        account_type = "Saving Account";
-    }else if (r2.isSelected()){
+        String account_type = null;
+        if(r1.isSelected()){
+            account_type = "Saving Account";
+        }else if (r2.isSelected()){
 
-        account_type = "Fixed Deposit Account";
-    }else if (r3.isSelected()){
+            account_type = "Fixed Deposit Account";
+        }else if (r3.isSelected()){
 
-        account_type = "Current Account";
-    }else if (r4.isSelected()){
+            account_type = "Current Account";
+        }else if (r4.isSelected()){
 
-        account_type = "Recurring Deposit Account";
-    }
+            account_type = "Recurring Deposit Account";
+        }
+
+        Random ran = new Random();
+        long first7 = (ran.nextLong() % 90000000L) + 1409963000000000L;
+        String cardNumber = " " + Math.abs(first7);
+
+        long first3 = (ran.nextLong() % 9000L) + 1000L;
+        String pin = " "+Math.abs(first3);
+
+        String facility = " ";
+        if(c1.isSelected()){
+            facility = facility + "ATM Card";
+        }else if(c2.isSelected()){
+
+            facility = facility + "Internet Banking";
+        }else if(c3.isSelected()){
+
+        facility = facility + "Mobile Banking";
+        }else if(c4.isSelected()){
+
+            facility = facility + "Email Alerts";
+        }else if(c5.isSelected()){
+
+            facility = facility + "Cheque Book";
+        }else if(c6.isSelected()){
+
+            facility = facility + "E-Statement";
+        }
 
 
-    }
+        try{
+
+            if(e.getSource() == submit){
+
+                if(account_type.isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Fill all the fields");
+                }else{
+
+                    Connection con = new Connection();
+                    String q = "";
+                }
+
+            }
+
+        }catch(Exception E){
+            E.printStackTrace();
+        }
+
+
+
+
+
+
+
+}
 
 
     public static void main(String[] args){
