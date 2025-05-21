@@ -21,7 +21,7 @@ public class SignUp3 extends JFrame implements ActionListener {
     JCheckBox c6;
     ButtonGroup group1;
 
-    SignUp3(){
+    SignUp3(String formno){
 
         this.formno = formno;
 
@@ -218,13 +218,27 @@ public class SignUp3 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
 
+    String account_type = null;
+    if(r1.isSelected()){
+        account_type = "Saving Account";
+    }else if (r2.isSelected()){
+
+        account_type = "Fixed Deposit Account";
+    }else if (r3.isSelected()){
+
+        account_type = "Current Account";
+    }else if (r4.isSelected()){
+
+        account_type = "Recurring Deposit Account";
+    }
+
 
     }
 
 
     public static void main(String[] args){
 
-        new SignUp3();
+        new SignUp3("" );
     }
 
 
