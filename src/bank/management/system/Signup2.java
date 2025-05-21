@@ -197,6 +197,52 @@ public class Signup2 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        String religion = (String) combobox.getSelectedItem();
+        String category = (String) comboBox2.getSelectedItem();
+        String income = (String) comboBox3.getSelectedItem();
+        String education = (String) comboBox4.getSelectedItem();
+        String occupation = (String) comboBox5.getSelectedItem();
+
+        String pan = textPAN.getText();
+        String aadhaar = textAadhaar.getText();
+
+        String senior_citizen = " ";
+        if(r1.isSelected()){
+            senior_citizen ="yes";
+        }else if (r2.isSelected()){
+            senior_citizen = "No";
+        }
+
+
+        String existing_account = " ";
+        if(r3.isSelected()){
+            existing_account="yes";
+        }else if (r2.isSelected()){
+            existing_account = "No";
+        }
+
+        try{
+
+            if(textPAN.getText().isEmpty() || textAadhaar.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"fill all the fields");
+            }
+            else{
+                Connection c1 = new Connection();
+                String q = "INSERT INTO  signuptwo (form_no,religion,category,income,education,occupation," +
+                           "pan,aadhaar,senior_citizen,existing_account)" +
+                           "VALUES('" + formno + "','" + religion + "','" + category + "','" + income + "','" + education + "'," +
+                           "'" + occupation + "','" + pan + "','" + aadhaar + "','" + senior_citizen + "','" + existing_account + "')";
+                c1.statement.executeUpdate(q);
+                new SignUp3(formno);
+                setVisible(false);
+            }
+
+        }catch(Exception E){
+            E.printStackTrace();
+        }
+
+
+
 
 
     }
