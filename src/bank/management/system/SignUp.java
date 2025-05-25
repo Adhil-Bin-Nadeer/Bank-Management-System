@@ -217,7 +217,6 @@ public class SignUp extends JFrame implements ActionListener {
 
         try{
 
-            // Check if name is empty or contains only whitespace
             if (name.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Name is required!");
                 return; // Stop execution after showing the dialog
