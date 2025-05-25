@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Random;
 
 public class SignUp3 extends JFrame implements ActionListener {
@@ -22,6 +23,8 @@ public class SignUp3 extends JFrame implements ActionListener {
     ButtonGroup group1;
 
     SignUp3(String formno){
+
+        super("Application Form");
 
         this.formno = formno;
 
@@ -206,6 +209,7 @@ public class SignUp3 extends JFrame implements ActionListener {
         setSize(1000,650);
         setLocation(450,80);
         getContentPane().setBackground(new Color(112, 236, 213));
+
         setVisible(true);
 
 
@@ -262,30 +266,32 @@ public class SignUp3 extends JFrame implements ActionListener {
 
         try{
 
-            if(e.getSource() == submit){
+            if(e.getSource() == submit) {
 
-                if(account_type.isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Fill all the fields");
-                }else{
+                if (account_type.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Fill all the fields");
+                } else {
 
                     Connection con = new Connection();
-                    String q = "";
+                    String q1 = "INSERT INTO signupthree(form_no,account_type,card_number,pin,facility)VALUES" +
+                            "('" + formno + "','" + account_type + "','" + cardNumber + "','" + pin + "','" + facility + "')";
+
+                    String q2 = "INSERT INTO login(form_no,card_number,pin)VALUES('" + formno + "','" + cardNumber + "','" + pin + "')";
+                    con.statement.executeUpdate(q1);
+                    con.statement.executeUpdate(q2);
+                    JOptionPane.showMessageDialog(null,"Card Number : "+cardNumber+"\nPin"+pin);
+                    new Deposit(pin);
+                    setVisible(false);
                 }
+            }else if (e.getSource()==cancel){
+                System.exit(0);
 
             }
-
         }catch(Exception E){
             E.printStackTrace();
         }
 
-
-
-
-
-
-
 }
-
 
     public static void main(String[] args){
 
