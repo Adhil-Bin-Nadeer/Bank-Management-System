@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Exception;
+import java.sql.ResultSet;
 
 public class Login extends JFrame implements ActionListener {
     JLabel label1,label2,label3;
@@ -45,7 +46,7 @@ public class Login extends JFrame implements ActionListener {
 
         textfield2 = new JTextField(15);
         textfield2.setBounds(324,190,230,30);
-        textfield2.setFont(new Font("Arial", Font.BOLD,28));
+        textfield2.setFont(new Font("Arial", Font.BOLD,15));
         add(textfield2);
 
 
@@ -59,7 +60,7 @@ public class Login extends JFrame implements ActionListener {
 
         passwordfield3 = new JPasswordField();
         passwordfield3.setBounds(325,250,230,30);
-        passwordfield3.setFont(new Font("Arial",Font.BOLD,28));
+        passwordfield3.setFont(new Font("Arial",Font.BOLD,15));
         add(passwordfield3);
 
 
@@ -101,6 +102,7 @@ public class Login extends JFrame implements ActionListener {
         setLayout(null);
         setSize(850,480);
         setLocation(450,200);
+        setUndecorated(true);
         setVisible(true);
 
     }
@@ -118,12 +120,28 @@ public class Login extends JFrame implements ActionListener {
 
             if(e.getSource() == button1){
 
+                Connection con = new Connection();
+                String cardNumber = textfield2.getText();
+                String pin = passwordfield3.getText();
+                String q = "SELECT * FROM login WHERE card_number = '"+ cardNumber+"' and pin = '"+pin+"'";
+                ResultSet resultSet = con.statement.executeQuery(q);
+                if(resultSet.next()){
+                    setVisible(false);
+                    new main_Class(pin);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Incorrect Card Number or PIN");
+                }
+
             }
             else if(e .getSource() == button2){
                 textfield2.setText("");
                 passwordfield3.setText("");
             }
             else if(e.getSource() == button3){
+
+                new SignUp();
+                setVisible(false);
+
 
             }
 
