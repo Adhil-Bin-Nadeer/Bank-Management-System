@@ -226,7 +226,7 @@ public class SignUp extends JFrame implements ActionListener {
                 Connection con1 = new Connection();
             String q = "INSERT INTO signup (form_no, Name, father_name, DOB, gender, email, marriage_status, address, city, pincode, state) VALUES ('" + formno + "','" + name + "','" + fname + "','" + dob + "','" + gender + "','" + email + "','" + martial + "','" + address + "','" + city + "','" + pincode + "','" + state + "')";
             con1.statement.executeUpdate(q);
-                new Signup2(first);
+                new Signup2(formno);
                 setVisible(false);
         }catch(SQLException E){
             E.printStackTrace();
