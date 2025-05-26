@@ -201,10 +201,6 @@ public class SignUp3 extends JFrame implements ActionListener {
 
 
 
-
-
-
-
         setLayout(null);
         setSize(1000,650);
         setLocation(450,80);
