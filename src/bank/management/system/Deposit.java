@@ -53,7 +53,6 @@ public class Deposit extends JFrame implements ActionListener {
 
 
 
-
         setLayout(null);
         setSize(1920,1080);
         setLocation(0,0);
@@ -93,9 +92,6 @@ public class Deposit extends JFrame implements ActionListener {
 
 
     }
-
-
-
 
 
     public static void main(String[] args){
